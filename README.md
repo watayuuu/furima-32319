@@ -42,41 +42,43 @@ Things you may want to cover:
 ### Association
 
 - has_many :items
-- has_one :delivery
+- has_one :managements
 
-## purchase_managementテーブル
+## managementsテーブル
 
 | Column          | Type      | Options                        |
 | --------------- | --------- | ------------------------------ |
-| user_id         |           |                                |
-| item_id         |           |                                |
+| user_id         | string    | null: false, foreign_key: true |
+| item_id         | string    | null: false, foreign_key: true |
 
 ### Association
 
 - belongs_to :item
 - belongs_to :user
+- has_one :delivery
 
 ## items テーブル
 
-| Column          | Type      | Options                        |
-| --------------- | --------- | ------------------------------ |
-| product_name    | string    | null: false                    |
-| commentary      | text      | null: false                    |
-| category_id     | integer   | null: false                    |
-| status_id       | integer   | null: false                    |
-| fee_id          | integer   | null: false                    |
-| area_id         | integer   | null: false                    |
-| days_id         | integer   | null: false                    |
-| price           | string    | null: false                    |
-| user            |references | null: false, foreign_key: true |
+| Column          | Type       | Options                        |
+| --------------- | ---------- | ------------------------------ |
+| product_name    | string     | null: false                    |
+| commentary      | text       | null: false                    |
+| category_id     | integer    | null: false                    |
+| status_id       | integer    | null: false                    |
+| fee_id          | integer    | null: false                    |
+| area_id         | integer    | null: false                    |
+| day_id          | integer    | null: false                    |
+| price           | integer    | null: false                    |
+| user            | references | null: false, foreign_key: true |
 
 ### Association
 
-- has_one :purchase_management
-- has_one :delivery
+- belongs_to :user
+- has_one :management
 
 
-## delivery テーブル
+
+## deliveries テーブル
 
 | Column          | Type       | Options                        |
 | --------------- | ---------- | ------------------------------ |
@@ -86,7 +88,8 @@ Things you may want to cover:
 | street          | string     | null: false                    |
 | building_name   | string     |                                |
 | phone           | string     | null: false                    |
+| management      | references | null: false, foreign_key: true |
 
 ### Association
 
-- belongs_to :item
+- belongs_to :management
