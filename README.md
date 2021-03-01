@@ -48,8 +48,8 @@ Things you may want to cover:
 
 | Column          | Type       | Options                        |
 | --------------- | ---------- | ------------------------------ |
-| user_id         | references | null: false, foreign_key: true |
-| item_id         | references | null: false, foreign_key: true |
+| user         | references | null: false, foreign_key: true |
+| item         | references | null: false, foreign_key: true |
 
 ### Association
 
@@ -74,7 +74,7 @@ Things you may want to cover:
 ### Association
 
 - belongs_to :user
-- has_many :managements
+- has_one :managements
 
 
 
