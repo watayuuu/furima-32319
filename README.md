@@ -42,14 +42,14 @@ Things you may want to cover:
 ### Association
 
 - has_many :items
-- has_one :managements
+- has_many :managements
 
-## managementsテーブル
+## managementテーブル
 
-| Column          | Type      | Options                        |
-| --------------- | --------- | ------------------------------ |
-| user_id         | string    | null: false, foreign_key: true |
-| item_id         | string    | null: false, foreign_key: true |
+| Column          | Type       | Options                        |
+| --------------- | ---------- | ------------------------------ |
+| user_id         | references | null: false, foreign_key: true |
+| item_id         | references | null: false, foreign_key: true |
 
 ### Association
 
@@ -74,7 +74,7 @@ Things you may want to cover:
 ### Association
 
 - belongs_to :user
-- has_one :management
+- has_many :managements
 
 
 
