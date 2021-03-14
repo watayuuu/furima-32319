@@ -12,7 +12,7 @@ class User < ApplicationRecord
       validates :birthday
       validates :encrypted_password,:password,:password_confirmation,format:{with: /(?=.*[a-zA-Z])(?=.*\d)[a-zA-Z\d]{6,}/}
       
-      with_options format:{with:/\A[ぁ-んァ-ン一-龥]/} do
+      with_options format:{with:/\A[ぁ-んァ-ン一-龥々]+\z/} do
         validates :last_name
         validates :first_name
       end
