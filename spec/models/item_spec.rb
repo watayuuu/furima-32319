@@ -31,7 +31,7 @@ RSpec.describe Item, type: :model do
       it "category_idの入力がないと登録できない" do
         @item.category_id = ''
         @item.valid?
-        expect(@item.errors.full_messages).to include("Category can't be blank", "Category is not a number")
+        expect(@item.errors.full_messages).to include("Category can't be blank")
       end
       it "category_idの入力で1が選択された場合は登録できない" do
         @item.category_id = 1
@@ -41,7 +41,7 @@ RSpec.describe Item, type: :model do
       it "status_idの入力がないと登録できない" do
         @item.status_id = ''
         @item.valid?
-        expect(@item.errors.full_messages).to include("Status can't be blank", "Status is not a number")
+        expect(@item.errors.full_messages).to include("Status can't be blank")
       end
       it "status_idの入力で1が選択された場合は登録できない" do
         @item.status_id = 1
@@ -51,7 +51,7 @@ RSpec.describe Item, type: :model do
       it "fee_idの入力がないと登録できない" do
         @item.fee_id = ''
         @item.valid?
-        expect(@item.errors.full_messages).to include("Fee can't be blank", "Fee is not a number")
+        expect(@item.errors.full_messages).to include("Fee can't be blank")
       end
       it "fee_idの入力で1が選択された場合は登録できない" do
         @item.fee_id = 1
@@ -61,7 +61,7 @@ RSpec.describe Item, type: :model do
       it "area_idの入力がないと登録できない" do
         @item.area_id = ''
         @item.valid?
-        expect(@item.errors.full_messages).to include("Area can't be blank", "Area is not a number")
+        expect(@item.errors.full_messages).to include("Area can't be blank")
       end
       it "area_idの入力で1が選択された場合は登録できない" do
         @item.area_id = 1
@@ -71,7 +71,7 @@ RSpec.describe Item, type: :model do
       it "deliverydate_idの入力がないと登録できない" do
         @item.deliverydate_id = ''
         @item.valid?
-        expect(@item.errors.full_messages).to include("Deliverydate can't be blank", "Deliverydate is not a number")
+        expect(@item.errors.full_messages).to include("Deliverydate can't be blank")
       end
       it "deliverydate_idの入力で1が選択された場合は登録できない" do
         @item.deliverydate_id = 1
@@ -81,7 +81,7 @@ RSpec.describe Item, type: :model do
       it "priceの入力がないと登録できない" do
         @item.price = ''
         @item.valid?
-        expect(@item.errors.full_messages).to include("Price can't be blank", "Price is invalid", "Price is not a number")
+        expect(@item.errors.full_messages).to include("Price can't be blank")
       end
       it "priceが全角文字では登録できない" do
         @item.price = 'あああああ'
