@@ -33,34 +33,50 @@ RSpec.describe Item, type: :model do
         @item.valid?
         expect(@item.errors.full_messages).to include("Category can't be blank", "Category is not a number")
       end
+      it "category_idの入力で1が選択された場合は登録できない" do
+        @item.category_id = 1
+        @item.valid?
+        expect(@item.errors.full_messages).to include("Category must be other than 1")
+      end
       it "status_idの入力がないと登録できない" do
         @item.status_id = ''
         @item.valid?
         expect(@item.errors.full_messages).to include("Status can't be blank", "Status is not a number")
+      end
+      it "status_idの入力で1が選択された場合は登録できない" do
+        @item.status_id = 1
+        @item.valid?
+        expect(@item.errors.full_messages).to include("Status must be other than 1")
       end
       it "fee_idの入力がないと登録できない" do
         @item.fee_id = ''
         @item.valid?
         expect(@item.errors.full_messages).to include("Fee can't be blank", "Fee is not a number")
       end
+      it "fee_idの入力で1が選択された場合は登録できない" do
+        @item.fee_id = 1
+        @item.valid?
+        expect(@item.errors.full_messages).to include("Fee must be other than 1")
+      end
       it "area_idの入力がないと登録できない" do
         @item.area_id = ''
         @item.valid?
         expect(@item.errors.full_messages).to include("Area can't be blank", "Area is not a number")
+      end
+      it "area_idの入力で1が選択された場合は登録できない" do
+        @item.area_id = 1
+        @item.valid?
+        expect(@item.errors.full_messages).to include("Area must be other than 1")
       end
       it "deliverydate_idの入力がないと登録できない" do
         @item.deliverydate_id = ''
         @item.valid?
         expect(@item.errors.full_messages).to include("Deliverydate can't be blank", "Deliverydate is not a number")
       end
-      it "各idで１が選択された場合は登録できない" do
-        @item.category_id = "1"
-        @item.status_id = "1"
-        @item.fee_id = "1"
-        @item.area_id = "1"
-        @item.deliverydate_id = "1"
+      it "deliverydate_idの入力で1が選択された場合は登録できない" do
+        @item.deliverydate_id = 1
         @item.valid?
-        expect(@item.errors.full_messages).to include("Category must be other than 1", "Status must be other than 1", "Fee must be other than 1", "Area must be other than 1", "Deliverydate must be other than 1")
+        expect(@item.errors.full_messages).to include("Deliverydate must be other than 1")
       end
       it "priceの入力がないと登録できない" do
         @item.price = ''
