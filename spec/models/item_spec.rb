@@ -53,31 +53,46 @@ RSpec.describe Item, type: :model do
         @item.valid?
         expect(@item.errors.full_messages).to include("Deliverydate can't be blank", "Deliverydate is not a number")
       end
+      it "各idで１が選択された場合は登録できない" do
+        @item.category_id = "1"
+        @item.status_id = "1"
+        @item.fee_id = "1"
+        @item.area_id = "1"
+        @item.deliverydate_id = "1"
+        @item.valid?
+        expect(@item.errors.full_messages).to include("Category must be other than 1", "Status must be other than 1", "Fee must be other than 1", "Area must be other than 1", "Deliverydate must be other than 1")
+      end
       it "priceの入力がないと登録できない" do
         @item.price = ''
         @item.valid?
         expect(@item.errors.full_messages).to include("Price can't be blank", "Price is invalid", "Price is not a number")
       end
-      it "priceが半角数字以外では登録できない" do
+      it "priceが全角文字では登録できない" do
         @item.price = 'あああああ'
         @item.valid?
         expect(@item.errors.full_messages).to include("Price is not a number")
       end
+      it "priceが半角英数字混合では登録できない" do
+        @item.price = "111aaa"
+        @item.valid?
+        expect(@item.errors.full_messages).to include("Price is not a number")
+      end
+      it "priceが半角英字では登録できない" do
+        @item.price = "aaaaaa"
+        @item.valid?
+        expect(@item.errors.full_messages).to include("Price is not a number")
+      end
       it "priceが300以下では登録できない" do
-        @item.price = '1'
+        @item.price = 1
         @item.valid?
         expect(@item.errors.full_messages).to include("Price must be greater than 300")
       end
         
       it "priceが9999999以上では登録できない" do
-        @item.price = '10000000000000000000000'
+        @item.price = 10000000000000000000000
         @item.valid?
         expect(@item.errors.full_messages).to include("Price must be less than 9999999")
       end
-
-
-    end
-
-    
+    end    
   end
 end
