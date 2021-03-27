@@ -59,17 +59,17 @@ Things you may want to cover:
 
 ## items テーブル
 
-| Column          | Type       | Options                        |
-| --------------- | ---------- | ------------------------------ |
-| product_name    | string     | null: false                    |
-| commentary      | text       | null: false                    |
-| category_id     | integer    | null: false                    |
-| status_id       | integer    | null: false                    |
-| fee_id          | integer    | null: false                    |
-| area_id         | integer    | null: false                    |
-| day_id          | integer    | null: false                    |
-| price           | integer    | null: false                    |
-| user            | references | null: false, foreign_key: true |
+| Column            | Type       | Options                        |
+| ----------------- | ---------- | ------------------------------ |
+| product_name      | string     | null: false                    |
+| commentary        | text       | null: false                    |
+| category_id       | integer    | null: false                    |
+| status_id         | integer    | null: false                    |
+| fee_id            | integer    | null: false                    |
+| area_id           | integer    | null: false                    |
+| deliverydate_id   | integer    | null: false                    |
+| price             | integer    | null: false                    |
+| user              | references | null: false, foreign_key: true |
 
 ### Association
 
