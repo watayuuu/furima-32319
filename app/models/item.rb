@@ -1,5 +1,4 @@
 class Item < ApplicationRecord
-  
   extend ActiveHash::Associations::ActiveRecordExtensions
   belongs_to :user
   belongs_to :category
@@ -10,11 +9,11 @@ class Item < ApplicationRecord
   has_one_attached :image
 
   with_options presence: true do
-    validates :product_name,:commentary,:image
-    validates :price, format: { with: /\A[0-9]+\z/},numericality: { greater_than: 300, less_than: 9999999 } 
+    validates :product_name, :commentary, :image
+    validates :price, format: { with: /\A[0-9]+\z/ }, numericality: { greater_than: 300, less_than: 9_999_999 }
 
     with_options numericality: { other_than: 1 } do
-      validates :category_id,:status_id,:fee_id, :area_id,:deliverydate_id
-    end    
+      validates :category_id, :status_id, :fee_id, :area_id, :deliverydate_id
+    end
   end
 end
